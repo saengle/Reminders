@@ -21,6 +21,8 @@
 		8E3111DF2C34491E00E1BB80 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111DE2C34491E00E1BB80 /* Reminder.swift */; };
 		8E3111E22C34591F00E1BB80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E12C34591F00E1BB80 /* MainViewController.swift */; };
 		8E3111E42C34596900E1BB80 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E32C34596900E1BB80 /* MainView.swift */; };
+		8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */; };
+		8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E92C345CA300E1BB80 /* AddEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		8E3111DE2C34491E00E1BB80 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		8E3111E12C34591F00E1BB80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8E3111E32C34596900E1BB80 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
+		8E3111E92C345CA300E1BB80 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +99,28 @@
 		8E3111E02C3458D900E1BB80 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8E3111E62C345C1700E1BB80 /* AddEdit */,
+				8E3111E52C345BF600E1BB80 /* Main */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8E3111E52C345BF600E1BB80 /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				8E3111E12C34591F00E1BB80 /* MainViewController.swift */,
 				8E3111E32C34596900E1BB80 /* MainView.swift */,
 			);
-			path = Presentation;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8E3111E62C345C1700E1BB80 /* AddEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */,
+				8E3111E92C345CA300E1BB80 /* AddEditView.swift */,
+			);
+			path = AddEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +212,11 @@
 			files = (
 				8E3111E42C34596900E1BB80 /* MainView.swift in Sources */,
 				8E3111B62C343D3300E1BB80 /* AppDelegate.swift in Sources */,
+				8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */,
 				8E3111B82C343D3300E1BB80 /* SceneDelegate.swift in Sources */,
 				8E3111DF2C34491E00E1BB80 /* Reminder.swift in Sources */,
 				8E3111E22C34591F00E1BB80 /* MainViewController.swift in Sources */,
+				8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
