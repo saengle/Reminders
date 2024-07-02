@@ -18,7 +18,7 @@ class Reminder: Object {
     @Persisted var deadLine = Date()
     @Persisted var imagePath: String?
     
-    convenience init(title: String ,priority: Int, content: String?, tag: String ,deadLine: Date, imagePath: String) {
+    convenience init(title: String ,priority: Int, content: String?, tag: String ,deadLine: Date, imagePath: String?) {
         self.init()
         self.title = title
         self.priority = priority
