@@ -23,6 +23,8 @@
 		8E3111E42C34596900E1BB80 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E32C34596900E1BB80 /* MainView.swift */; };
 		8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */; };
 		8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111E92C345CA300E1BB80 /* AddEditView.swift */; };
+		8E3111EF2C356BAD00E1BB80 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111EE2C356BAD00E1BB80 /* MainCollectionViewCell.swift */; };
+		8E3111F12C356C4D00E1BB80 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111F02C356C4D00E1BB80 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		8E3111E32C34596900E1BB80 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		8E3111E92C345CA300E1BB80 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
+		8E3111EE2C356BAD00E1BB80 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E3111F02C356C4D00E1BB80 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 				8E3111BE2C343D3500E1BB80 /* Assets.xcassets */,
 				8E3111C02C343D3500E1BB80 /* LaunchScreen.storyboard */,
 				8E3111C32C343D3500E1BB80 /* Info.plist */,
+				8E3111F02C356C4D00E1BB80 /* UIView+Extension.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			children = (
 				8E3111E12C34591F00E1BB80 /* MainViewController.swift */,
 				8E3111E32C34596900E1BB80 /* MainView.swift */,
+				8E3111EE2C356BAD00E1BB80 /* MainCollectionViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 				8E3111E42C34596900E1BB80 /* MainView.swift in Sources */,
 				8E3111B62C343D3300E1BB80 /* AppDelegate.swift in Sources */,
 				8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */,
+				8E3111F12C356C4D00E1BB80 /* UIView+Extension.swift in Sources */,
+				8E3111EF2C356BAD00E1BB80 /* MainCollectionViewCell.swift in Sources */,
 				8E3111B82C343D3300E1BB80 /* SceneDelegate.swift in Sources */,
 				8E3111DF2C34491E00E1BB80 /* Reminder.swift in Sources */,
 				8E3111E22C34591F00E1BB80 /* MainViewController.swift in Sources */,
