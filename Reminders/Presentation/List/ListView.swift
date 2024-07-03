@@ -21,7 +21,6 @@ class ListView: UIView {
         self.backgroundColor = .systemBackground
         configureHierachy()
         configureLayout()
-        configureView(title: "전체")
     }
     
     required init?(coder: NSCoder) {
