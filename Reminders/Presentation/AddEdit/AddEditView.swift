@@ -9,8 +9,19 @@ import UIKit
 
 class AddEditView: UIView {
     
+    let tableView = {
+        let tv = UITableView(frame: .zero, style: .insetGrouped)
+        return tv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .systemBackground
+        self.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        tableView.register(AddEditTableViewCell.self, forCellReuseIdentifier: AddEditTableViewCell.id)
     }
     
     required init?(coder: NSCoder) {
