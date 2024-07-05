@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     override func loadView() {
         view = listView
     }
+    lazy var imageWitdh = view.window?.windowScene?.screen.bounds.width
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -24,7 +25,7 @@ extension ListViewController {
         listView.tableView.dataSource = self
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
-        listView.tableView.estimatedRowHeight = 50
+//        listView.tableView.estimatedRowHeight = 200
         listView.tableView.rowHeight = UITableView.automaticDimension
     }
 }
@@ -36,6 +37,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.id, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
+        if let imageWitdh {
+            cell.configureCell(width:imageWitdh)
+        }
         return cell
     }
 }
