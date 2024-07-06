@@ -11,7 +11,6 @@ class AddEditTableViewCell: UITableViewCell {
     
     let textField = {
         let tf = UITextField()
-        tf.placeholder = "제목"
         return tf
     }()
     
@@ -32,7 +31,7 @@ class AddEditTableViewCell: UITableViewCell {
             make.edges.equalToSuperview().inset(16)
         }
     }
-    func configureCell() {
-        
+    func configureCell(placeholer: String) {
+        textField.placeholder = placeholer
     }
 }

@@ -25,7 +25,6 @@ extension ListViewController {
         listView.tableView.dataSource = self
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
-//        listView.tableView.estimatedRowHeight = 200
         listView.tableView.rowHeight = UITableView.automaticDimension
     }
 }

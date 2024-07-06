@@ -9,7 +9,7 @@ import UIKit
 
 import RealmSwift
 
-class AddEditViewController: UIViewController {
+class AddEditViewController: UIViewController{
     
     private let addEditView = AddEditView()
     private var list: Results<Reminder>!
@@ -23,7 +23,7 @@ class AddEditViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         
-        let payment = Reminder(title: "test", priority: 0, content: "i'm test", tag: "스파이시", deadLine: Date(), imagePath: nil)
+        let payment = Reminder(title: "test", priority: 0, content: "i'm test", tag: "스파이시", deadLine: Date(), imagePath: nil, isDone: false)
         do {
             try realm.write({
                 realm.add(payment)
@@ -41,10 +41,18 @@ extension AddEditViewController {
         self.addEditView.tableView.dataSource = self
         self.addEditView.tableView.delegate = self
         navigationItem.title = "새로운 할 일"
+        if #available(iOS 15.0, *) {
+            self.addEditView.tableView.sectionFooterHeight = 0
+        }
     }
 }
 
+extension AddEditViewController: UITextFieldDelegate{
+    
+}
+
 extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
+    
     // MARK:  Number of Sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -59,15 +67,47 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddEditTableViewCell.id, for: indexPath) as? AddEditTableViewCell else { return UITableViewCell() }
+            switch indexPath.row {
+            case 0:
+                cell.configureCell(placeholer: "제목")
+                cell.textField.delegate = self
+            case 1:
+                cell.configureCell(placeholer: "내용")
+                cell.textField.delegate = self
+            default:
+                print("")
+            }
             return cell
         } else {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "마감일"
+            switch indexPath.section {
+            case 1:
+                cell.textLabel?.text = "마감일"
+            case 2:
+                cell.textLabel?.text = "태그"
+            case 3:
+                cell.textLabel?.text = "우선 순위"
+            case 4:
+                cell.textLabel?.text = "이미지 추가"
+            default:
+                print("")
+            }
             cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+//        switch indexPath.section {
+//        case 1:
+//            
+//        case 2:
+//           
+//        case 3:
+//           
+//        case 4:
+//           
+//        default:
+//            print("")
+//        }
     }
 }
