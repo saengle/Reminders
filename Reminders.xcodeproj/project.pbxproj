@@ -43,6 +43,7 @@
 		8E3112262C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */; };
 		8E3112292C3B3ADB00E1BB80 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */; };
 		8E31122C2C3B3F7000E1BB80 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31122B2C3B3F7000E1BB80 /* DateViewController.swift */; };
+		8E31122E2C3B523800E1BB80 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31122D2C3B523800E1BB80 /* FileManager+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySegmentViewController.swift; sourceTree = "<group>"; };
 		8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		8E31122B2C3B3F7000E1BB80 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		8E31122D2C3B523800E1BB80 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				8E3111F02C356C4D00E1BB80 /* UIView+Extension.swift */,
 				8E3111F62C358C7C00E1BB80 /* UIViewController+Extension.swift */,
+				8E31122D2C3B523800E1BB80 /* FileManager+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				8E31121D2C3AF61900E1BB80 /* MainTabBarController.swift in Sources */,
 				8E3111FD2C359C6900E1BB80 /* ListView.swift in Sources */,
 				8E3111F72C358C7C00E1BB80 /* UIViewController+Extension.swift in Sources */,
+				8E31122E2C3B523800E1BB80 /* FileManager+Extension.swift in Sources */,
 				8E31121B2C3AE82B00E1BB80 /* ReminderRepository.swift in Sources */,
 				8E3111FB2C359C3C00E1BB80 /* ListViewController.swift in Sources */,
 				8E3111F42C3581AB00E1BB80 /* AddEditTableViewCell.swift in Sources */,
@@ -454,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -511,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -20,7 +20,7 @@ class AddEditViewController: UIViewController{
     private var date = Date()
     private var priority = 0
     private var tag = ""
-    private var image = UIImage()
+    private var image: UIImage?
     
     lazy var navBarItemCancel = {
         let bt = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(barButtonClicked(_:)))
@@ -44,6 +44,8 @@ class AddEditViewController: UIViewController{
         configureView()
         configureNavBar()
         NotificationCenter.default.addObserver(self, selector: #selector(memoReceivedNotification), name: NSNotification.Name("memoReceived"), object: nil)
+        let realm = try! Realm()
+        print(realm.configuration.fileURL)
     }
 }
 
@@ -85,10 +87,13 @@ extension AddEditViewController {
         }
     }
     private func addReminder() {
-        if self.tag.isEmpty {
-            realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: nil, deadline: date, imagePath: nil)
-        } else {
-            realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: "#" + self.tag, deadline: date, imagePath: nil)
+        let reminder = Reminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: nil, deadLine: date, imagePath: nil, isDone: false, flag: false )
+        realmDBHelper.createReminder(data: reminder)
+        if let image = self.image {
+            if #available(iOS 16.0, *) {
+                saveImageToDocument(image: image, filename: "\(reminder.id)")
+            } else {
+            }
         }
         dismiss()
     }
