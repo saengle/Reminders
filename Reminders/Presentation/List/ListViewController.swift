@@ -41,4 +41,25 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let detail = UIContextualAction(style: .normal, title: "detail") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("detail 클릭 됨")
+            success(true)
+        }
+        
+        detail.backgroundColor = .systemGray
+        let flag = UIContextualAction(style: .normal, title: "Share") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("Share 클릭 됨")
+            success(true)
+        }
+        flag.backgroundColor = .systemOrange
+        
+        let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("delete 클릭 됨")
+            success(true)
+        }
+        delete.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions:[delete, flag, detail])
+    }
 }
