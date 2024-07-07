@@ -42,6 +42,7 @@
 		8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */; };
 		8E3112262C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */; };
 		8E3112292C3B3ADB00E1BB80 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */; };
+		8E31122C2C3B3F7000E1BB80 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31122B2C3B3F7000E1BB80 /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepositoryImpl.swift; sourceTree = "<group>"; };
 		8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySegmentViewController.swift; sourceTree = "<group>"; };
 		8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		8E31122B2C3B3F7000E1BB80 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		8E3111E62C345C1700E1BB80 /* AddEdit */ = {
 			isa = PBXGroup;
 			children = (
+				8E31122A2C3B3F6600E1BB80 /* Date */,
 				8E3112272C3B3ACD00E1BB80 /* Tag */,
 				8E3112242C3B2B9600E1BB80 /* PrioritySegment */,
 				8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */,
@@ -258,6 +261,14 @@
 				8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */,
 			);
 			path = Tag;
+			sourceTree = "<group>";
+		};
+		8E31122A2C3B3F6600E1BB80 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				8E31122B2C3B3F7000E1BB80 /* DateViewController.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				8E3112262C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift in Sources */,
 				8E3111E22C34591F00E1BB80 /* MainViewController.swift in Sources */,
 				8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */,
+				8E31122C2C3B3F7000E1BB80 /* DateViewController.swift in Sources */,
 				8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

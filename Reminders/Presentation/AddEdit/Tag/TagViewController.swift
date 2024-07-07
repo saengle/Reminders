@@ -19,11 +19,9 @@ class TagViewController: UIViewController {
         return tf
     }()
     
-    let array: [String] = ["없음", "낮음", "중간", "높음"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .secondarySystemBackground
         self.view.addSubview(self.tagTextField)
         tagTextField.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()

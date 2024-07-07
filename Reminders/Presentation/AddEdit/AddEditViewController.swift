@@ -16,6 +16,7 @@ class AddEditViewController: UIViewController{
     
     private var titleText: String = ""
     private var contentText: String?
+    private var date = Date()
     private var priority = 0
     private var tag = ""
     
@@ -32,7 +33,6 @@ class AddEditViewController: UIViewController{
         return bt
     }()
     
-    
     override func loadView() {
         view = addEditView
     }
@@ -48,20 +48,21 @@ class AddEditViewController: UIViewController{
 extension AddEditViewController {
     
     @objc func memoReceivedNotification(notification: NSNotification) {
-        print(notification.userInfo)
         if let result = notification.userInfo?["priority"] as? Int {
             priority = result
         }
         if let result = notification.userInfo?["tag"] as? String {
             tag = result
         }
-        
+        if let result = notification.userInfo?["date"] as? Date {
+            date = result
+        }
     }
     @objc func barButtonClicked(_ sender: UIBarButtonItem) {
         switch sender.tag {
-        case 0:
-            cancelButtonClicked()
-        case 1:
+        case 0: // cancelButtonClicked
+            dismiss()
+        case 1: // AddButtonClicked
             addReminder()
         default:
             print("error")
@@ -82,9 +83,15 @@ extension AddEditViewController {
         }
     }
     private func addReminder() {
-        realmDBHelper.createReminder(title: self.titleText, priority: 0, content: self.contentText, tag: "", deadline: Date(), imagePath: nil)
+        if self.tag.isEmpty {
+            realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: nil, deadline: date, imagePath: nil)
+        } else {
+            realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: "#" + self.tag, deadline: date, imagePath: nil)
+        }
+        realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: "#" + self.tag, deadline: date, imagePath: nil)
+        dismiss()
     }
-    private func cancelButtonClicked() {
+    private func dismiss() {
         dismiss(animated: true)
     }
 }
@@ -162,7 +169,9 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-            print("마감일 눌렀음")
+            let vc = DateViewController()
+            vc.date = self.date
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = TagViewController()
             vc.tagString = self.tag
