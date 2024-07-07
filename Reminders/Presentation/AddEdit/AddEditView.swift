@@ -11,12 +11,13 @@ class AddEditView: UIView {
     
     let tableView = {
         let tv = UITableView(frame: .zero, style: .insetGrouped)
+        tv.backgroundColor = .secondarySystemBackground
         return tv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .secondarySystemBackground
         self.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
