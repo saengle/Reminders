@@ -30,6 +30,13 @@
 		8E3111FB2C359C3C00E1BB80 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111FA2C359C3C00E1BB80 /* ListViewController.swift */; };
 		8E3111FD2C359C6900E1BB80 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111FC2C359C6900E1BB80 /* ListView.swift */; };
 		8E3111FF2C359F6400E1BB80 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3111FE2C359F6400E1BB80 /* ListTableViewCell.swift */; };
+		8E31120F2C3AE54A00E1BB80 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31120E2C3AE54A00E1BB80 /* UseCases.swift */; };
+		8E3112112C3AE5C100E1BB80 /* CreateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112102C3AE5C100E1BB80 /* CreateReminder.swift */; };
+		8E3112132C3AE5D800E1BB80 /* ReadReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112122C3AE5D800E1BB80 /* ReadReminder.swift */; };
+		8E3112152C3AE5E800E1BB80 /* ReadReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112142C3AE5E800E1BB80 /* ReadReminders.swift */; };
+		8E3112172C3AE5FA00E1BB80 /* UpdateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112162C3AE5FA00E1BB80 /* UpdateReminder.swift */; };
+		8E3112192C3AE60B00E1BB80 /* DeleteReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112182C3AE60B00E1BB80 /* DeleteReminder.swift */; };
+		8E31121B2C3AE82B00E1BB80 /* ReminderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +59,13 @@
 		8E3111FA2C359C3C00E1BB80 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		8E3111FC2C359C6900E1BB80 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		8E3111FE2C359F6400E1BB80 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		8E31120E2C3AE54A00E1BB80 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
+		8E3112102C3AE5C100E1BB80 /* CreateReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminder.swift; sourceTree = "<group>"; };
+		8E3112122C3AE5D800E1BB80 /* ReadReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadReminder.swift; sourceTree = "<group>"; };
+		8E3112142C3AE5E800E1BB80 /* ReadReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadReminders.swift; sourceTree = "<group>"; };
+		8E3112162C3AE5FA00E1BB80 /* UpdateReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReminder.swift; sourceTree = "<group>"; };
+		8E3112182C3AE60B00E1BB80 /* DeleteReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReminder.swift; sourceTree = "<group>"; };
+		8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +105,10 @@
 		8E3111B42C343D3300E1BB80 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				8E3111F52C358C6700E1BB80 /* Extension */,
+				8E3112082C3ADACE00E1BB80 /* Data */,
+				8E3112092C3ADAD200E1BB80 /* Domain */,
 				8E3111E02C3458D900E1BB80 /* Presentation */,
-				8E3111DD2C3448DF00E1BB80 /* Model */,
+				8E3111F52C358C6700E1BB80 /* Extension */,
 				8E3111B52C343D3300E1BB80 /* AppDelegate.swift */,
 				8E3111B72C343D3300E1BB80 /* SceneDelegate.swift */,
 				8E3111BE2C343D3500E1BB80 /* Assets.xcassets */,
@@ -158,6 +173,44 @@
 				8E3111FE2C359F6400E1BB80 /* ListTableViewCell.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		8E3112082C3ADACE00E1BB80 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8E3112092C3ADAD200E1BB80 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				8E31120D2C3AE4A000E1BB80 /* Repository */,
+				8E31120C2C3AE49A00E1BB80 /* UseCase */,
+				8E3111DD2C3448DF00E1BB80 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		8E31120C2C3AE49A00E1BB80 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				8E31120E2C3AE54A00E1BB80 /* UseCases.swift */,
+				8E3112102C3AE5C100E1BB80 /* CreateReminder.swift */,
+				8E3112122C3AE5D800E1BB80 /* ReadReminder.swift */,
+				8E3112142C3AE5E800E1BB80 /* ReadReminders.swift */,
+				8E3112162C3AE5FA00E1BB80 /* UpdateReminder.swift */,
+				8E3112182C3AE60B00E1BB80 /* DeleteReminder.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		8E31120D2C3AE4A000E1BB80 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,14 +300,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3112192C3AE60B00E1BB80 /* DeleteReminder.swift in Sources */,
 				8E3111E42C34596900E1BB80 /* MainView.swift in Sources */,
 				8E3111FD2C359C6900E1BB80 /* ListView.swift in Sources */,
 				8E3111F72C358C7C00E1BB80 /* UIViewController+Extension.swift in Sources */,
+				8E31121B2C3AE82B00E1BB80 /* ReminderRepository.swift in Sources */,
 				8E3111FB2C359C3C00E1BB80 /* ListViewController.swift in Sources */,
 				8E3111F42C3581AB00E1BB80 /* AddEditTableViewCell.swift in Sources */,
+				8E3112152C3AE5E800E1BB80 /* ReadReminders.swift in Sources */,
 				8E3111B62C343D3300E1BB80 /* AppDelegate.swift in Sources */,
+				8E3112172C3AE5FA00E1BB80 /* UpdateReminder.swift in Sources */,
 				8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */,
+				8E31120F2C3AE54A00E1BB80 /* UseCases.swift in Sources */,
 				8E3111FF2C359F6400E1BB80 /* ListTableViewCell.swift in Sources */,
+				8E3112112C3AE5C100E1BB80 /* CreateReminder.swift in Sources */,
+				8E3112132C3AE5D800E1BB80 /* ReadReminder.swift in Sources */,
 				8E3111F12C356C4D00E1BB80 /* UIView+Extension.swift in Sources */,
 				8E3111EF2C356BAD00E1BB80 /* MainCollectionViewCell.swift in Sources */,
 				8E3111B82C343D3300E1BB80 /* SceneDelegate.swift in Sources */,
