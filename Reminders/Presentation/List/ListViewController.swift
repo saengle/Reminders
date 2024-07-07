@@ -8,7 +8,8 @@
 import UIKit
 
 class ListViewController: UIViewController {
-    
+    let realmDBHelper = RealmDBHelper()
+    lazy var myList =  realmDBHelper.realm.objects(Reminder.self)
     let listView = ListView()
     override func loadView() {
         view = listView
@@ -26,18 +27,20 @@ extension ListViewController {
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
         listView.tableView.rowHeight = UITableView.automaticDimension
+        print(myList)
     }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return myList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.id, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
+        let data = myList[indexPath.row]
         if let imageWitdh {
-            cell.configureCell(width:imageWitdh)
+            cell.configureCell(title: data.title, content: data.content, priority: "\(data.priority)", date: "\(data.deadLine)", tag: data.tag, width: imageWitdh)
         }
         return cell
     }
@@ -56,6 +59,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             print("delete 클릭 됨")
+            self.realmDBHelper.deleteReminder(num: indexPath.row) {
+                tableView.reloadData()
+            }
             success(true)
         }
         delete.backgroundColor = .systemRed

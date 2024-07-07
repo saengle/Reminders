@@ -84,7 +84,7 @@ class ListTableViewCell: UITableViewCell {
             make.height.equalTo(((width - 62) / 2))
         }
     }
-    func configureCell(width: CGFloat) {
+    func configureCell(title: String, content: String?, priority: String?, date: String?, tag: String?, width: CGFloat) {
         configureHierachy()
         configureLayout(width: width)
         checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -94,13 +94,13 @@ class ListTableViewCell: UITableViewCell {
         mainVerticalStackView.isLayoutMarginsRelativeArrangement = true
         
         horizontalStackView.alignment = .leading
-        priorityLabel.text = "!!!"
-        titleLabel.text = "긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글"
+        priorityLabel.text = priority
+        titleLabel.text = title
         
-        contentLabel.text = "긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글긴글"
+        contentLabel.text = content
        
-        dateLabel.text = "2022/2/22"
-        tagLabel.text = "태그라벨"
+        dateLabel.text = date
+        tagLabel.text = tag
         myImageView.backgroundColor = .gray
     }
 }
