@@ -83,7 +83,7 @@ class ListTableViewCell: UITableViewCell {
             make.height.equalTo(((width - 62) / 2))
         }
     }
-    func configureCell(title: String, content: String?, priority: String?, date: String?, tag: String?, width: CGFloat) {
+    func configureCell(title: String, content: String?, priority: String?, date: String?, tag: String?, image: UIImage?, width: CGFloat) {
         configureHierachy()
         configureLayout(width: width)
         checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -100,7 +100,7 @@ class ListTableViewCell: UITableViewCell {
        
         dateLabel.text = date
         tagLabel.text = tag
-        myImageView.backgroundColor = .gray
+        myImageView.image = image
     }
 }
 //circle.inset.filled  + color => 눌렀을 때 그 계열 색

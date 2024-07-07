@@ -46,6 +46,13 @@ extension ListViewController {
         }
         return res
     }
+    private func loadImage(id: String) -> UIImage? {
+        if #available(iOS 16.0, *) {
+            return loadImageToDocument(filename: "\(id)")
+        } else {
+            return nil
+        }
+    }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,8 +63,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.id, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         let data = myList[indexPath.row]
+        let tempImage = self.loadImage(id: "\(data.id)")
         if let imageWitdh {
-            cell.configureCell(title: data.title, content: data.content, priority: makePriorityString(priority: data.priority), date: "\(data.deadLine)", tag: data.tag, width: imageWitdh)
+            cell.configureCell(title: data.title, content: data.content, priority: makePriorityString(priority: data.priority), date: "\(data.deadLine)", tag: data.tag, image: tempImage, width: imageWitdh)
+            if tempImage == nil {
+                cell.myImageView.isHidden = true
+            }
+            
         }
         return cell
     }
