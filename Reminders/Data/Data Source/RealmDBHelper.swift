@@ -11,23 +11,22 @@ import RealmSwift
 
 class RealmDBHelper {
     
-//    let realm = try! Realm()
+    private let realm = try! Realm()
     
     func createReminder() {
+        let data = Reminder(title: "test", priority: 0, content: "안녕 디지몬", tag: "#안녕", deadLine: Date(), imagePath: nil, isDone: false)
         do {
-            let realm = try Realm()
-            let data = Reminder(title: "test", priority: 0, content: "안녕 디지몬", tag: "#안녕", deadLine: Date(), imagePath: nil, isDone: false)
-            do {
-               try realm.write({
-                    realm.add(data)
-                   print("Realm Create Succeed")
-                   // 3. 이동
-                })
-            } catch {
-                print("data 생성에 error가 발생하였습니다..")
-            }
+            try realm.write({
+                realm.add(data)
+                print("Realm Create Succeed")
+            })
         } catch {
-            print("realm 접근에 실패했습니다.")
+            print("data 생성에 error가 발생하였습니다..")
         }
+    }
+    
+    func fetchAll() -> [Reminder] {
+        let value = realm.objects(Reminder.self)
+        return Array(value)
     }
 }
