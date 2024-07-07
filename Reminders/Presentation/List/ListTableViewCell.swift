@@ -23,7 +23,12 @@ class ListTableViewCell: UITableViewCell {
         sv.spacing = 8.0
         return sv
     }()
-    let priorityLabel = UILabel()
+    let priorityLabel = {
+        let lb = UILabel()
+        lb.numberOfLines = 1
+        lb.textColor = .systemPurple
+        return lb
+    }()
     let titleLabel = {
         let lb = UILabel()
         lb.numberOfLines = 0
@@ -48,8 +53,20 @@ class ListTableViewCell: UITableViewCell {
         sv.spacing = 8.0
         return sv
     }()
-    let dateLabel = UILabel()
-    let tagLabel = UILabel()
+    let dateLabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 17)
+        lb.textColor = .systemGray
+        lb.numberOfLines = 1
+        return lb
+    }()
+    let tagLabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 17)
+        lb.textColor = .systemTeal
+        lb.numberOfLines = 1
+        return lb
+    }()
     let myImageView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: ListTableViewCell.id)
@@ -83,7 +100,7 @@ class ListTableViewCell: UITableViewCell {
             make.height.equalTo(((width - 62) / 2))
         }
     }
-    func configureCell(title: String, content: String?, priority: String?, date: String?, tag: String?, image: UIImage?, width: CGFloat) {
+    func configureCell(title: String, flag: Bool, content: String?, priority: String?, date: String?, tag: String?, image: UIImage?, width: CGFloat) {
         configureHierachy()
         configureLayout(width: width)
         checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -95,6 +112,7 @@ class ListTableViewCell: UITableViewCell {
         horizontalStackView.alignment = .leading
         priorityLabel.text = priority
         titleLabel.text = title
+        flagImageView.isHidden = !flag
         
         contentLabel.text = content
        

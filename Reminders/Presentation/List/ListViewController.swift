@@ -53,6 +53,13 @@ extension ListViewController {
             return nil
         }
     }
+    private func makeDateFormatted(date: Date) -> String{
+        let myDateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "yyyy. MM. dd. E" // 2020년 08월 13일 오후 04시 30분
+        myDateFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
+        let convertStr = myDateFormatter.string(from: date)
+        return convertStr
+    }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -65,7 +72,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let data = myList[indexPath.row]
         let tempImage = self.loadImage(id: "\(data.id)")
         if let imageWitdh {
-            cell.configureCell(title: data.title, content: data.content, priority: makePriorityString(priority: data.priority), date: "\(data.deadLine)", tag: data.tag, image: tempImage, width: imageWitdh)
+            cell.configureCell(title: data.title, flag: data.flag, content: data.content, priority: makePriorityString(priority: data.priority), date: makeDateFormatted(date: data.deadLine), tag: data.tag, image: tempImage, width: imageWitdh)
             if tempImage == nil {
                 cell.myImageView.isHidden = true
             }
