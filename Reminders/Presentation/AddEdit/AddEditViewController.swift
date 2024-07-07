@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 import RealmSwift
 
@@ -19,6 +20,7 @@ class AddEditViewController: UIViewController{
     private var date = Date()
     private var priority = 0
     private var tag = ""
+    private var image = UIImage()
     
     lazy var navBarItemCancel = {
         let bt = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(barButtonClicked(_:)))
@@ -88,10 +90,23 @@ extension AddEditViewController {
         } else {
             realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: "#" + self.tag, deadline: date, imagePath: nil)
         }
-        realmDBHelper.createReminder(title: self.titleText, priority: self.priority, content: self.contentText, tag: "#" + self.tag, deadline: date, imagePath: nil)
         dismiss()
     }
     private func dismiss() {
+        dismiss(animated: true)
+    }
+}
+// MARK:  PHPickerViewControllerDelegate
+extension AddEditViewController: PHPickerViewControllerDelegate, UINavigationControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if let itemProvider = results.first?.itemProvider,
+           itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async {
+                    self.image = image as? UIImage ?? UIImage(systemName: "photo.badge.plus.fill")!
+                }
+            }
+        }
         dismiss(animated: true)
     }
 }
@@ -125,7 +140,9 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
-        } else { return 1}
+        } else if section == 4 {
+            return 2
+        } else { return 1 }
     }
     // MARK:  cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,7 +199,14 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
             vc.prioritySegNum = self.priority
             self.navigationController?.pushViewController(vc, animated: true)
         case 4:
-            print("이미지 추가 눌렀음")
+            if indexPath.row == 0 {
+                print("이미지 추가 눌렀음")
+                var configuration = PHPickerConfiguration()
+                configuration.selectionLimit = 1 //선택 최대 장수 제한
+                configuration.filter = .any(of: [.images]) // 이런 방식으로 사진만, 라이브포토만, 비디오만 .. 등등의 제한 설정 가능.
+                let picker = PHPickerViewController(configuration: configuration)
+                picker.delegate = self
+                present(picker, animated: true)}
         default:
             print("")
         }
