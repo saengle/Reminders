@@ -17,9 +17,10 @@ class Reminder: Object {
     @Persisted var content: String? = ""
     @Persisted var deadLine = Date()
     @Persisted var imagePath: String?
-    @Persisted var isDone: Bool
+    @Persisted var isDone: Bool = false
+    @Persisted var flag: Bool = false
     
-    convenience init(title: String ,priority: Int, content: String?, tag: String? ,deadLine: Date, imagePath: String?, isDone: Bool) {
+    convenience init(title: String ,priority: Int, content: String?, tag: String? ,deadLine: Date, imagePath: String?, isDone: Bool, flag: Bool) {
         self.init()
         self.title = title
         self.priority = priority
@@ -27,6 +28,7 @@ class Reminder: Object {
         self.content = content
         self.deadLine = deadLine
         self.imagePath = imagePath
-        self.isDone = false
+        self.isDone = isDone
+        self.flag = flag
     }
 }

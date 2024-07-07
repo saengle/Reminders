@@ -14,7 +14,7 @@ class RealmDBHelper {
     let realm = try! Realm()
     
     func createReminder(title: String, priority: Int, content: String?, tag: String?, deadline: Date, imagePath: String?) {
-        let data = Reminder(title: title, priority: priority, content: content, tag: tag, deadLine: deadline, imagePath: imagePath, isDone: false)
+        let data = Reminder(title: title, priority: priority, content: content, tag: tag, deadLine: deadline, imagePath: imagePath, isDone: false, flag: false)
         do {
             try realm.write({
                 realm.add(data)
