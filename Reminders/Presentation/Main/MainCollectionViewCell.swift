@@ -19,15 +19,12 @@ class MainCollectionViewCell: UICollectionViewCell {
     }()
     let listImageView = {
         let iv =  UIImageView()
-        iv.image = UIImage(systemName: "calendar.circle.fill")
-        iv.tintColor = .systemRed
         return iv
     }()
     let listTitleLabel = {
         let lb = UILabel()
         lb.font = .boldSystemFont(ofSize: 17)
         lb.textColor = .systemGray
-        lb.text = "Scheduled"
         return lb
     }()
     private let hStackView = {
@@ -39,7 +36,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     let numberOfListItemLabel = {
         let lb = UILabel()
         lb.font = .boldSystemFont(ofSize: 30)
-        lb.text = "4"
         lb.textAlignment = .right
         return lb
     }()
@@ -84,8 +80,10 @@ class MainCollectionViewCell: UICollectionViewCell {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    func configureCell() {
-        
-        
+    func configureCell(color: UIColor, image: UIImage, title: String, number: Int?) {
+        listImageView.tintColor = color
+        listImageView.image = image
+        listTitleLabel.text = title
+        numberOfListItemLabel.text = "\(number!)"
     }
 }

@@ -53,7 +53,7 @@ extension AddEditViewController {
     @objc func barButtonClicked(_ sender: UIBarButtonItem) {
         switch sender.tag {
         case 0:
-            print("캔슬버튼 클릭됨")
+            dismiss(animated: true)
         case 1:
             print("애드버튼 클릭됨")
         default:

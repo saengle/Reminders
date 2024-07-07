@@ -9,17 +9,17 @@ import Foundation
 
  class UseCases {
     
-    let createReminder: CreateReminder
-    let readReminder: ReadReminder
-    let readReminders: ReadReminders
-    let updateReminder: UpdateReminder
-    let deleteReminder: DeleteReminder
+    let createReminderUseCase: CreateReminderUseCase
+    let readReminderUseCase: ReadReminderUseCase
+    let readRemindersUseCase: ReadRemindersUseCase
+    let updateReminderUseCase: UpdateReminderUseCase
+    let deleteReminderUseCase: DeleteReminderUseCase
     
-    init(createReminder: CreateReminder, readReminder: ReadReminder, readReminders: ReadReminders, updateReminder: UpdateReminder, deleteReminder: DeleteReminder) {
-        self.createReminder = createReminder
-        self.readReminder = readReminder
-        self.readReminders = readReminders
-        self.updateReminder = updateReminder
-        self.deleteReminder = deleteReminder
+    init(createReminderUseCase: CreateReminderUseCase, readReminderUseCase: ReadReminderUseCase, readRemindersUseCase: ReadRemindersUseCase, updateReminderUseCase: UpdateReminderUseCase, deleteReminderUseCase: DeleteReminderUseCase) {
+        self.createReminderUseCase = createReminderUseCase
+        self.readReminderUseCase = readReminderUseCase
+        self.readRemindersUseCase = readRemindersUseCase
+        self.updateReminderUseCase = updateReminderUseCase
+        self.deleteReminderUseCase = deleteReminderUseCase
     }
 }

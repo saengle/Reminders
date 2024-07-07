@@ -54,7 +54,8 @@ class MainView: UIView {
         }
         mainCollectionView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(16)
-            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalToSuperview()
         }
     }
     func configureView() {}
