@@ -14,6 +14,8 @@ class AddEditViewController: UIViewController{
     private let addEditView = AddEditView()
     private var list: Results<Reminder>!
     private let realm = try! Realm()
+    var titleText: String = ""
+    var contentText: String?
     
     lazy var navBarItemCancel = {
         let bt = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(barButtonClicked(_:)))
@@ -24,6 +26,7 @@ class AddEditViewController: UIViewController{
     lazy var navBarItemAdd = {
         let bt = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(barButtonClicked(_:)))
         bt.tag = 1
+        bt.isEnabled = false
         return bt
     }()
     
@@ -36,16 +39,6 @@ class AddEditViewController: UIViewController{
         super.viewDidLoad()
         configureView()
         configureNavBar()
-        let payment = Reminder(title: "test", priority: 0, content: "i'm test", tag: "스파이시", deadLine: Date(), imagePath: nil, isDone: false)
-        do {
-            try realm.write({
-                realm.add(payment)
-                print("Realm Create Succeed")
-                self.list = realm.objects(Reminder.self)
-            })
-        } catch {
-            print("data 생성에 error가 발생하였습니다..")
-        }
     }
 }
 
@@ -53,9 +46,9 @@ extension AddEditViewController {
     @objc func barButtonClicked(_ sender: UIBarButtonItem) {
         switch sender.tag {
         case 0:
-            dismiss(animated: true)
+            cancelButtonClicked()
         case 1:
-            print("애드버튼 클릭됨")
+            addReminder()
         default:
             print("error")
         }
@@ -74,10 +67,41 @@ extension AddEditViewController {
             self.addEditView.tableView.sectionFooterHeight = 0
         }
     }
+    private func addReminder() {
+        let payment = Reminder(title: self.titleText, priority: 0, content: self.contentText, tag: "스파이시", deadLine: Date(), imagePath: nil, isDone: false)
+        do {
+            try realm.write({
+                realm.add(payment)
+                print("Realm Create Succeed")
+                self.list = realm.objects(Reminder.self)
+                dismiss(animated: true)
+            })
+        } catch {
+            print("data 생성에 error가 발생하였습니다..")
+        }
+    }
+    private func cancelButtonClicked() {
+        dismiss(animated: true)
+    }
 }
 
 extension AddEditViewController: UITextFieldDelegate{
-    
+    @objc
+    private func textFieldDidChange(sender: UITextField) {
+        guard let text = sender.text else {return}
+        
+        if sender.tag == 0 {
+            titleText = text
+        } else if sender.tag == 1 {
+            contentText = text
+        }
+        
+        if titleText.isEmpty {
+            navBarItemAdd.isEnabled = false
+        } else {
+            navBarItemAdd.isEnabled = true
+        }
+    }
 }
 
 extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
@@ -101,9 +125,13 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 cell.configureCell(placeholer: "제목")
                 cell.textField.delegate = self
+                cell.textField.tag = indexPath.row
+                cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             case 1:
                 cell.configureCell(placeholer: "내용")
                 cell.textField.delegate = self
+                cell.textField.tag = indexPath.row
+                cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             default:
                 print("")
             }

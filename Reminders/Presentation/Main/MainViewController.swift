@@ -58,7 +58,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 , image: UIImage(systemName: "checkmark.circle.fill")!, title: "Completed", number: 5)
         default: print("문제가 발생했습니다.")
         }
-        #colorLiteral(red: 0.6099210665, green: 0.6504435934, blue: 0.7140484248, alpha: 1)
 
         return cell
     }

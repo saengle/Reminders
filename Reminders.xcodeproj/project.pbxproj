@@ -38,6 +38,8 @@
 		8E3112192C3AE60B00E1BB80 /* DeleteReminderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112182C3AE60B00E1BB80 /* DeleteReminderUseCase.swift */; };
 		8E31121B2C3AE82B00E1BB80 /* ReminderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */; };
 		8E31121D2C3AF61900E1BB80 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31121C2C3AF61900E1BB80 /* MainTabBarController.swift */; };
+		8E3112202C3B13CD00E1BB80 /* RealmDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31121F2C3B13CD00E1BB80 /* RealmDBHelper.swift */; };
+		8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		8E3112182C3AE60B00E1BB80 /* DeleteReminderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReminderUseCase.swift; sourceTree = "<group>"; };
 		8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepository.swift; sourceTree = "<group>"; };
 		8E31121C2C3AF61900E1BB80 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8E31121F2C3B13CD00E1BB80 /* RealmDBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBHelper.swift; sourceTree = "<group>"; };
+		8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepositoryImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 		8E3112082C3ADACE00E1BB80 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8E31121E2C3B13A900E1BB80 /* Data Source */,
+				8E3112212C3B13F600E1BB80 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -212,6 +218,22 @@
 			isa = PBXGroup;
 			children = (
 				8E31121A2C3AE82B00E1BB80 /* ReminderRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		8E31121E2C3B13A900E1BB80 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				8E31121F2C3B13CD00E1BB80 /* RealmDBHelper.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		8E3112212C3B13F600E1BB80 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -322,9 +344,11 @@
 				8E3111F12C356C4D00E1BB80 /* UIView+Extension.swift in Sources */,
 				8E3111EF2C356BAD00E1BB80 /* MainCollectionViewCell.swift in Sources */,
 				8E3111B82C343D3300E1BB80 /* SceneDelegate.swift in Sources */,
+				8E3112202C3B13CD00E1BB80 /* RealmDBHelper.swift in Sources */,
 				8E3111DF2C34491E00E1BB80 /* Reminder.swift in Sources */,
 				8E3111E22C34591F00E1BB80 /* MainViewController.swift in Sources */,
 				8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */,
+				8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
