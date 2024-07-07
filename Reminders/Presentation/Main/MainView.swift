@@ -13,6 +13,10 @@ class MainView: UIView {
     
     let searchBar = {
         let sb = UISearchBar()
+        sb.barTintColor = .secondarySystemBackground
+        sb.placeholder = "Search"
+        sb.showsCancelButton = false
+        sb.searchBarStyle = .minimal
         return sb
     }()
     lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -29,7 +33,8 @@ class MainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .secondarySystemBackground
+        mainCollectionView.backgroundColor = .secondarySystemBackground
         configureHierachy()
         configureLayout()
     }
@@ -42,14 +47,11 @@ class MainView: UIView {
         [searchBar, mainCollectionView].forEach{self.addSubview($0)}
     }
     private func configureLayout() {
-        searchBar.backgroundColor = .brown
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(44)
         }
-        
-        mainCollectionView.backgroundColor = .cyan
         mainCollectionView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(16)
             make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
