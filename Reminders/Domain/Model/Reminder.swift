@@ -19,7 +19,7 @@ class Reminder: Object {
     @Persisted var imagePath: String?
     @Persisted var isDone: Bool
     
-    convenience init(title: String ,priority: Int, content: String?, tag: String ,deadLine: Date, imagePath: String?, isDone: Bool) {
+    convenience init(title: String ,priority: Int, content: String?, tag: String? ,deadLine: Date, imagePath: String?, isDone: Bool) {
         self.init()
         self.title = title
         self.priority = priority

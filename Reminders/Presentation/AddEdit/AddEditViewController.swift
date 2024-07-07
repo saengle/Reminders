@@ -11,11 +11,12 @@ import RealmSwift
 
 class AddEditViewController: UIViewController{
     
+    private let realmDBHelper = RealmDBHelper()
     private let addEditView = AddEditView()
-    private var list: Results<Reminder>!
-    private let realm = try! Realm()
-    var titleText: String = ""
-    var contentText: String?
+    
+    private var titleText: String = ""
+    private var contentText: String?
+    private var priority = 0
     
     lazy var navBarItemCancel = {
         let bt = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(barButtonClicked(_:)))
@@ -39,10 +40,22 @@ class AddEditViewController: UIViewController{
         super.viewDidLoad()
         configureView()
         configureNavBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(memoReceivedNotification), name: NSNotification.Name("memoReceived"), object: nil)
     }
 }
 
 extension AddEditViewController {
+    
+    @objc func memoReceivedNotification(notification: NSNotification) {
+        print(notification.userInfo) // 유저인포: 딕셔너리
+        if let result = notification.userInfo?["priority"] as? Int {
+            priority = result
+        }
+//        if let result = notification.userInfo?["priority"] as? Int {
+//            priority = result
+//        }
+        
+    }
     @objc func barButtonClicked(_ sender: UIBarButtonItem) {
         switch sender.tag {
         case 0:
@@ -68,17 +81,7 @@ extension AddEditViewController {
         }
     }
     private func addReminder() {
-        let payment = Reminder(title: self.titleText, priority: 0, content: self.contentText, tag: "스파이시", deadLine: Date(), imagePath: nil, isDone: false)
-        do {
-            try realm.write({
-                realm.add(payment)
-                print("Realm Create Succeed")
-                self.list = realm.objects(Reminder.self)
-                dismiss(animated: true)
-            })
-        } catch {
-            print("data 생성에 error가 발생하였습니다..")
-        }
+        realmDBHelper.createReminder(title: self.titleText, priority: 0, content: self.contentText, tag: "", deadline: Date(), imagePath: nil)
     }
     private func cancelButtonClicked() {
         dismiss(animated: true)
@@ -156,17 +159,20 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        switch indexPath.section {
-        //        case 1:
-        //
-        //        case 2:
-        //
-        //        case 3:
-        //
-        //        case 4:
-        //
-        //        default:
-        //            print("")
-        //        }
+        switch indexPath.section {
+        case 1:
+            print("마감일 눌렀음")
+        case 2:
+            print("태그 눌렀음")
+        case 3:
+            print("우선순위 눌렀음")
+            let vc = PrioritySegmentViewController()
+            vc.prioritySegNum = self.priority
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            print("이미지 추가 눌렀음")
+        default:
+            print("")
+        }
     }
 }

@@ -53,7 +53,6 @@ class ListTableViewCell: UITableViewCell {
     let myImageView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: ListTableViewCell.id)
-        contentView.backgroundColor = .systemGray6
     }
     
     required init?(coder: NSCoder) {
