@@ -17,6 +17,7 @@ class AddEditViewController: UIViewController{
     private var titleText: String = ""
     private var contentText: String?
     private var priority = 0
+    private var tag = ""
     
     lazy var navBarItemCancel = {
         let bt = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(barButtonClicked(_:)))
@@ -47,13 +48,13 @@ class AddEditViewController: UIViewController{
 extension AddEditViewController {
     
     @objc func memoReceivedNotification(notification: NSNotification) {
-        print(notification.userInfo) // 유저인포: 딕셔너리
+        print(notification.userInfo)
         if let result = notification.userInfo?["priority"] as? Int {
             priority = result
         }
-//        if let result = notification.userInfo?["priority"] as? Int {
-//            priority = result
-//        }
+        if let result = notification.userInfo?["tag"] as? String {
+            tag = result
+        }
         
     }
     @objc func barButtonClicked(_ sender: UIBarButtonItem) {
@@ -163,9 +164,11 @@ extension AddEditViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             print("마감일 눌렀음")
         case 2:
-            print("태그 눌렀음")
+            let vc = TagViewController()
+            vc.tagString = self.tag
+            vc.tagTextField.text = self.tag
+            self.navigationController?.pushViewController(vc, animated: true)
         case 3:
-            print("우선순위 눌렀음")
             let vc = PrioritySegmentViewController()
             vc.prioritySegNum = self.priority
             self.navigationController?.pushViewController(vc, animated: true)

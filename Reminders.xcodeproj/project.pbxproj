@@ -41,6 +41,7 @@
 		8E3112202C3B13CD00E1BB80 /* RealmDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31121F2C3B13CD00E1BB80 /* RealmDBHelper.swift */; };
 		8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */; };
 		8E3112262C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */; };
+		8E3112292C3B3ADB00E1BB80 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		8E31121F2C3B13CD00E1BB80 /* RealmDBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBHelper.swift; sourceTree = "<group>"; };
 		8E3112222C3B141C00E1BB80 /* ReminderRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRepositoryImpl.swift; sourceTree = "<group>"; };
 		8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySegmentViewController.swift; sourceTree = "<group>"; };
+		8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		8E3111E62C345C1700E1BB80 /* AddEdit */ = {
 			isa = PBXGroup;
 			children = (
+				8E3112272C3B3ACD00E1BB80 /* Tag */,
 				8E3112242C3B2B9600E1BB80 /* PrioritySegment */,
 				8E3111E72C345C9C00E1BB80 /* AddEditViewController.swift */,
 				8E3111E92C345CA300E1BB80 /* AddEditView.swift */,
@@ -247,6 +250,14 @@
 				8E3112252C3B2BAE00E1BB80 /* PrioritySegmentViewController.swift */,
 			);
 			path = PrioritySegment;
+			sourceTree = "<group>";
+		};
+		8E3112272C3B3ACD00E1BB80 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				8E3112282C3B3ADB00E1BB80 /* TagViewController.swift */,
+			);
+			path = Tag;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 				8E3112112C3AE5C100E1BB80 /* CreateReminderUseCase.swift in Sources */,
 				8E3112132C3AE5D800E1BB80 /* ReadReminderUseCase.swift in Sources */,
 				8E3111F12C356C4D00E1BB80 /* UIView+Extension.swift in Sources */,
+				8E3112292C3B3ADB00E1BB80 /* TagViewController.swift in Sources */,
 				8E3111EF2C356BAD00E1BB80 /* MainCollectionViewCell.swift in Sources */,
 				8E3111B82C343D3300E1BB80 /* SceneDelegate.swift in Sources */,
 				8E3112202C3B13CD00E1BB80 /* RealmDBHelper.swift in Sources */,

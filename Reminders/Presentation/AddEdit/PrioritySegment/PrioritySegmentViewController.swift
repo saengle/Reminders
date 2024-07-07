@@ -40,9 +40,4 @@ class PrioritySegmentViewController: UIViewController {
     private func segconChanged(segcon: UISegmentedControl) {
         prioritySegNum = segcon.selectedSegmentIndex
     }
-    
-    @objc
-    private func backButtonClicked(_: UIBarButtonItem) {
-        print("ehlasid")
-    }
 }
