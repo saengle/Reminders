@@ -27,7 +27,6 @@ class MainViewController: UIViewController {
         item.title = "Add List"
         return item
     }()
-    //    let titleList = ["Today", "Scheduled", "All", "Flagged", "Completed"]
     let titleList = FilteringType.allCases
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,18 @@ class MainViewController: UIViewController {
         mainView.mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.id)
         self.tabBarController?.delegate = self
         self.navigationItem.backButtonTitle = "Lists"
+        NotificationCenter.default.addObserver(
+                 self,
+                 selector: #selector(self.didDismissDetailNotification(_:)),
+                 name: NSNotification.Name("\(From.mainVC.rawValue)"),
+                 object: nil
+             )
+    }
+    @objc func didDismissDetailNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            print("u what ni?")
+            self.mainView.mainCollectionView.reloadData()
+        }
     }
 }
 

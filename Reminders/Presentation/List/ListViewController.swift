@@ -26,8 +26,15 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sendNotiToVC(From.mainVC)
+    }
 }
 extension ListViewController {
+    private func sendNotiToVC(_ from: From) {
+        NotificationCenter.default.post(name: NSNotification.Name("\(from.rawValue)"), object: nil, userInfo: nil)
+    }
     private func configureViewController() {
         listView.configureView(title: mainTitle)
         listView.tableView.dataSource = self

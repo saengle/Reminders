@@ -16,6 +16,7 @@ class AddEditViewController: UIViewController{
     private let addEditView = AddEditView()
     
     var myReminder: Reminder?
+    var from: From = From.mainVC
     private var titleText: String = ""
     private var contentText: String?
     private var date = Date()
@@ -47,9 +48,16 @@ class AddEditViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(memoReceivedNotification), name: NSNotification.Name("memoReceived"), object: nil)
         let realm = try! Realm()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sendNotiToVC(self.from)
+    }
 }
 
 extension AddEditViewController {
+    private func sendNotiToVC(_ from: From) {
+        NotificationCenter.default.post(name: NSNotification.Name("\(from.rawValue)"), object: nil, userInfo: nil)
+    }
     
     @objc func memoReceivedNotification(notification: NSNotification) {
         if let result = notification.userInfo?["priority"] as? Int {
