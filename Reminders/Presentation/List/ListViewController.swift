@@ -10,7 +10,11 @@ import RealmSwift
 
 class ListViewController: UIViewController {
     let realmDBHelper = RealmDBHelper()
-    lazy var myList =  realmDBHelper.realm.objects(Reminder.self)
+    lazy var myList: [Reminder] = []{
+        didSet {
+            self.listView.tableView.reloadData()
+        }
+    }
     lazy var mainTitle = ""
     let listView = ListView()
     override func loadView() {
@@ -29,7 +33,7 @@ extension ListViewController {
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
         listView.tableView.rowHeight = UITableView.automaticDimension
-        print(myList)
+        myList = realmDBHelper.fetchAll()
     }
     
     private func makePriorityString(priority: Int) -> String? {
@@ -64,6 +68,7 @@ extension ListViewController {
     }
 }
 
+@available(iOS 16.0, *)
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myList.count
@@ -78,7 +83,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             if tempImage == nil {
                 cell.myImageView.isHidden = true
             }
-            
         }
         return cell
     }
@@ -93,12 +97,18 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         flag.backgroundColor = .systemOrange
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.realmDBHelper.deleteReminder(num: indexPath.row) {
-                tableView.reloadData()
+            self.removeImageFromDocument(filename: "\(self.myList[indexPath.row].id)")
+            self.realmDBHelper.deleteReminder(id: self.myList[indexPath.row].id) {
+                self.myList = self.realmDBHelper.fetchAll()
             }
             success(true)
         }
         delete.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions:[delete, flag, detail])
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        realmDBHelper.updateReminder(oldData: myList[indexPath.row], newData: Reminder(title: "테스트으", priority: 1, content: "좋겠다아아앙", tag: "라라라 ?", deadLine: Date(), imagePath: nil, isDone: false, flag: false)) {
+            self.myList = self.realmDBHelper.fetchAll()
+        }
     }
 }

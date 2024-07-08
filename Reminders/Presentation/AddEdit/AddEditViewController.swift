@@ -45,7 +45,6 @@ class AddEditViewController: UIViewController{
         configureNavBar()
         NotificationCenter.default.addObserver(self, selector: #selector(memoReceivedNotification), name: NSNotification.Name("memoReceived"), object: nil)
         let realm = try! Realm()
-        print(realm.configuration.fileURL)
     }
 }
 
