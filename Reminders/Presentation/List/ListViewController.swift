@@ -10,6 +10,7 @@ import RealmSwift
 
 class ListViewController: UIViewController {
     let realmDBHelper = RealmDBHelper()
+    var filter: FilteringType = FilteringType.all
     lazy var myList: [Reminder] = []{
         didSet {
             self.listView.tableView.reloadData()
@@ -33,7 +34,7 @@ extension ListViewController {
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
         listView.tableView.rowHeight = UITableView.automaticDimension
-        myList = realmDBHelper.readFilterdReminders(filter: FilteringType.all)
+        myList = realmDBHelper.readFilterdReminders(filter: self.filter)
     }
     
     private func makePriorityString(priority: Int) -> String? {
@@ -99,7 +100,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.removeImageFromDocument(filename: "\(self.myList[indexPath.row].id)")
             self.realmDBHelper.deleteReminder(id: self.myList[indexPath.row].id) {
-                self.myList = self.realmDBHelper.readFilterdReminders(filter: FilteringType.all)
+                self.myList = self.realmDBHelper.readFilterdReminders(filter: self.filter)
             }
             success(true)
         }
@@ -107,8 +108,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions:[delete, flag, detail])
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        realmDBHelper.updateReminder(oldData: myList[indexPath.row], newData: Reminder(title: "테스트으", priority: 1, content: "좋겠다아아앙", tag: "라라라 ?", deadLine: Date(), imagePath: nil, isDone: false, flag: false)) {
-            self.myList = self.realmDBHelper.readFilterdReminders(filter: FilteringType.all)
+        realmDBHelper.updateReminder(oldData: myList[indexPath.row], newData: Reminder(title: "테스트으", priority: 1, content: "좋겠다아아앙", tag: "라라라 ?", deadLine: Date(), imagePath: nil, isDone: true, flag: true)) {
+            self.myList = self.realmDBHelper.readFilterdReminders(filter: self.filter)
         }
     }
 }

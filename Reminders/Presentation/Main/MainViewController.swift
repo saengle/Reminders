@@ -70,9 +70,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function, indexPath.item)
         let vc = ListViewController()
         vc.mainTitle = titleList[indexPath.row].rawValue
+        vc.filter = titleList[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

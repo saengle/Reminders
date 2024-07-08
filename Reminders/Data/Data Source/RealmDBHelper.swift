@@ -24,10 +24,6 @@ class RealmDBHelper {
         }
     }
     
-//    func readAllReminders() -> [Reminder] {
-//        let value = realm.objects(Reminder.self)
-//        return Array(value)
-//    }
     func readFilterdReminders(filter: FilteringType) -> [Reminder] {
         let value = realm.objects(Reminder.self)
         var result: Results<Reminder>
@@ -35,7 +31,9 @@ class RealmDBHelper {
         case .all:
             result = value
         case .today:
-            result = value
+            result = value.where({
+                $0.deadLine <= Date()
+            })
         case .scheduled:
             result = value
         case .flagged:
