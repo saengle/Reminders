@@ -24,9 +24,30 @@ class RealmDBHelper {
         }
     }
     
-    func fetchAll() -> [Reminder] {
+//    func readAllReminders() -> [Reminder] {
+//        let value = realm.objects(Reminder.self)
+//        return Array(value)
+//    }
+    func readFilterdReminders(filter: FilteringType) -> [Reminder] {
         let value = realm.objects(Reminder.self)
-        return Array(value)
+        var result: Results<Reminder>
+        switch filter {
+        case .all:
+            result = value
+        case .today:
+            result = value
+        case .scheduled:
+            result = value
+        case .flagged:
+            result = value.where {
+                $0.flag == true
+            }
+        case .completed:
+            result = value.where {
+                $0.isDone == true
+            }
+        }
+        return Array(result)
     }
     
     func updateReminder(oldData: Reminder, newData: Reminder, completion: @escaping() -> ()) {
@@ -62,6 +83,6 @@ class RealmDBHelper {
                 print("data 삭제에 error가 발생하였습니다..")
             }
         }
-      
+        
     }
 }

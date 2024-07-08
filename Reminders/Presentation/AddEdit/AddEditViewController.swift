@@ -15,6 +15,7 @@ class AddEditViewController: UIViewController{
     private let realmDBHelper = RealmDBHelper()
     private let addEditView = AddEditView()
     
+    var myReminder: Reminder?
     private var titleText: String = ""
     private var contentText: String?
     private var date = Date()

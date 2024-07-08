@@ -33,7 +33,7 @@ extension ListViewController {
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
         listView.tableView.rowHeight = UITableView.automaticDimension
-        myList = realmDBHelper.fetchAll()
+        myList = realmDBHelper.readFilterdReminders(filter: FilteringType.all)
     }
     
     private func makePriorityString(priority: Int) -> String? {
@@ -99,7 +99,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.removeImageFromDocument(filename: "\(self.myList[indexPath.row].id)")
             self.realmDBHelper.deleteReminder(id: self.myList[indexPath.row].id) {
-                self.myList = self.realmDBHelper.fetchAll()
+                self.myList = self.realmDBHelper.readFilterdReminders(filter: FilteringType.all)
             }
             success(true)
         }
@@ -108,7 +108,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         realmDBHelper.updateReminder(oldData: myList[indexPath.row], newData: Reminder(title: "테스트으", priority: 1, content: "좋겠다아아앙", tag: "라라라 ?", deadLine: Date(), imagePath: nil, isDone: false, flag: false)) {
-            self.myList = self.realmDBHelper.fetchAll()
+            self.myList = self.realmDBHelper.readFilterdReminders(filter: FilteringType.all)
         }
     }
 }

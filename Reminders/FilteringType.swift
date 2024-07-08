@@ -7,11 +7,10 @@
 
 import Foundation
 
-enum FilteringType {
-    case all
-    case today
-    case scheduled
-    case flagged
-    case whole
-    case completed
+enum FilteringType: String, CaseIterable {
+    case today = "Today"
+    case scheduled = "Scheduled"
+    case all = "All"
+    case flagged = "Flagged"
+    case completed = "Completed"
 }
