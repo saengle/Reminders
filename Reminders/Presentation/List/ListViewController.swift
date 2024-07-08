@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListViewController: UIViewController {
     let realmDBHelper = RealmDBHelper()
     lazy var myList =  realmDBHelper.realm.objects(Reminder.self)
+    lazy var mainTitle = ""
     let listView = ListView()
     override func loadView() {
         view = listView
@@ -22,7 +24,7 @@ class ListViewController: UIViewController {
 }
 extension ListViewController {
     private func configureViewController() {
-        listView.configureView(title: "All")
+        listView.configureView(title: mainTitle)
         listView.tableView.dataSource = self
         listView.tableView.delegate = self
         listView.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.id)
@@ -55,8 +57,8 @@ extension ListViewController {
     }
     private func makeDateFormatted(date: Date) -> String{
         let myDateFormatter = DateFormatter()
-        myDateFormatter.dateFormat = "yyyy. MM. dd. E" // 2020년 08월 13일 오후 04시 30분
-        myDateFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
+        myDateFormatter.dateFormat = "yyyy. MM. dd. E"
+        myDateFormatter.locale = Locale(identifier:"ko_KR") 
         let convertStr = myDateFormatter.string(from: date)
         return convertStr
     }

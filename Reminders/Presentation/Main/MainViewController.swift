@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         item.title = "Add List"
         return item
     }()
-    
+    let titleList = ["Today", "Scheduled", "All", "Flagged", "Completed"]
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.mainCollectionView.dataSource = self
@@ -46,16 +46,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.id, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell()}
         switch indexPath.row {
         case 0:
-            cell.configureCell(color: .systemBlue, image: UIImage(systemName: "08.circle.fill")!, title: "Today", number: 5)
+            cell.configureCell(color: .systemBlue, image: UIImage(systemName: "08.circle.fill")!, title: titleList[indexPath.row], number: 5)
         case 1:
-            cell.configureCell(color: .systemRed, image: UIImage(systemName: "calendar.circle.fill")!, title: "Scheduled", number: 5)
+            cell.configureCell(color: .systemRed, image: UIImage(systemName: "calendar.circle.fill")!, title: titleList[indexPath.row], number: 5)
         case 2:
-            cell.configureCell(color: .systemGray, image: UIImage(systemName: "tray.circle.fill")!, title: "All", number: 5)
+            cell.configureCell(color: .systemGray, image: UIImage(systemName: "tray.circle.fill")!, title: titleList[indexPath.row], number: 5)
         case 3:
-            cell.configureCell(color: .systemOrange, image: UIImage(systemName: "flag.circle.fill")!, title: "Flagged", number: 5)
+            cell.configureCell(color: .systemOrange, image: UIImage(systemName: "flag.circle.fill")!, title: titleList[indexPath.row], number: 5)
         case 4:
             cell.configureCell(color: #colorLiteral(red: 0.6099210665, green: 0.6504435934, blue: 0.7140484248, alpha: 1)
-, image: UIImage(systemName: "checkmark.circle.fill")!, title: "Completed", number: 5)
+, image: UIImage(systemName: "checkmark.circle.fill")!, title: titleList[indexPath.row], number: 5)
         default: print("문제가 발생했습니다.")
         }
 
@@ -64,6 +64,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function, indexPath.item)
         let vc = ListViewController()
+        vc.mainTitle = titleList[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
