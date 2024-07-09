@@ -33,8 +33,8 @@ class MainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .systemBackground
-        mainCollectionView.backgroundColor = .systemBackground
+        self.backgroundColor = .systemGroupedBackground
+        mainCollectionView.backgroundColor = .systemGroupedBackground
         configureHierachy()
         configureLayout()
     }

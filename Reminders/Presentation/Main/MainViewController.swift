@@ -30,6 +30,12 @@ class MainViewController: UIViewController {
     let titleList = FilteringType.allCases
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVC()
+    }
+}
+
+extension MainViewController {
+    private func configureVC() {
         mainView.mainCollectionView.dataSource = self
         mainView.mainCollectionView.delegate = self
         mainView.mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.id)
@@ -42,9 +48,9 @@ class MainViewController: UIViewController {
                  object: nil
              )
     }
+    
     @objc func didDismissDetailNotification(_ notification: Notification) {
         DispatchQueue.main.async {
-            print("u what ni?")
             self.mainView.mainCollectionView.reloadData()
         }
     }

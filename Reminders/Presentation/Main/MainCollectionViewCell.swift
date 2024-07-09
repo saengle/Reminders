@@ -84,6 +84,6 @@ class MainCollectionViewCell: UICollectionViewCell {
         listImageView.tintColor = color
         listImageView.image = image
         listTitleLabel.text = title
-        numberOfListItemLabel.text = "\(number!)"
+        numberOfListItemLabel.text = "\(number ?? 0)"
     }
 }

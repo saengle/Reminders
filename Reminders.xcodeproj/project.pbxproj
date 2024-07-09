@@ -46,6 +46,8 @@
 		8E31122E2C3B523800E1BB80 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31122D2C3B523800E1BB80 /* FileManager+Extension.swift */; };
 		8E3112332C3C502600E1BB80 /* FilteringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112322C3C502600E1BB80 /* FilteringType.swift */; };
 		8E3112352C3C617700E1BB80 /* From.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112342C3C617700E1BB80 /* From.swift */; };
+		8E3112442C3CB24400E1BB80 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112432C3CB24400E1BB80 /* NewListViewController.swift */; };
+		8E3112462C3CB24E00E1BB80 /* NewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3112452C3CB24E00E1BB80 /* NewListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		8E31122D2C3B523800E1BB80 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		8E3112322C3C502600E1BB80 /* FilteringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringType.swift; sourceTree = "<group>"; };
 		8E3112342C3C617700E1BB80 /* From.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = From.swift; sourceTree = "<group>"; };
+		8E3112432C3CB24400E1BB80 /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
+		8E3112452C3CB24E00E1BB80 /* NewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 		8E3111E02C3458D900E1BB80 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8E3112422C3CB23500E1BB80 /* NewList */,
 				8E3111F92C359BFD00E1BB80 /* List */,
 				8E3111E62C345C1700E1BB80 /* AddEdit */,
 				8E3111E52C345BF600E1BB80 /* Main */,
@@ -280,6 +285,15 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		8E3112422C3CB23500E1BB80 /* NewList */ = {
+			isa = PBXGroup;
+			children = (
+				8E3112432C3CB24400E1BB80 /* NewListViewController.swift */,
+				8E3112452C3CB24E00E1BB80 /* NewListView.swift */,
+			);
+			path = NewList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -380,6 +394,7 @@
 				8E3111B62C343D3300E1BB80 /* AppDelegate.swift in Sources */,
 				8E3112332C3C502600E1BB80 /* FilteringType.swift in Sources */,
 				8E3112172C3AE5FA00E1BB80 /* UpdateReminderUseCase.swift in Sources */,
+				8E3112462C3CB24E00E1BB80 /* NewListView.swift in Sources */,
 				8E3112352C3C617700E1BB80 /* From.swift in Sources */,
 				8E3111E82C345C9C00E1BB80 /* AddEditViewController.swift in Sources */,
 				8E31120F2C3AE54A00E1BB80 /* UseCases.swift in Sources */,
@@ -397,6 +412,7 @@
 				8E3111EA2C345CA300E1BB80 /* AddEditView.swift in Sources */,
 				8E31122C2C3B3F7000E1BB80 /* DateViewController.swift in Sources */,
 				8E3112232C3B141C00E1BB80 /* ReminderRepositoryImpl.swift in Sources */,
+				8E3112442C3CB24400E1BB80 /* NewListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
