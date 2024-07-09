@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NewListViewController: UIViewController {
+class AddListViewController: UIViewController {
     
-    let newListView = NewListView()
+    let newListView = AddListView()
     
     override func loadView() {
         view = newListView

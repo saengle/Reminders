@@ -9,9 +9,8 @@ import UIKit
 
 import SnapKit
 
-class NewListView: UIView {
+class AddListView: UIView {
     
-//    let 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
